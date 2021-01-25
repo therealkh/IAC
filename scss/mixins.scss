@@ -1,0 +1,81 @@
+@mixin max-text-lines($n) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  display: -webkit-box;
+  -webkit-line-clamp: $n;
+  -webkit-box-orient: vertical;
+  line-clamp: $n;
+  box-orient: vertical;
+}
+@mixin title {
+  font-family: Minion Pro;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 35px;
+  color: #333333;
+  @media (max-width: 575px){
+    font-size: 25px;
+  }
+  @media (max-width: 400px){
+    font-size: 20px;
+  }
+}
+@mixin headline {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 30px;
+  color: #333333;
+  @media (max-width: 767px){
+    font-size: 25px;
+  }
+  @media (max-width: 575px){
+    font-size: 20px;
+  }
+  @media (max-width: 400px){
+    font-size: 18px;
+  }
+}
+@mixin subheadline {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  color: #333333;
+  @media (max-width: 575px){
+    font-size: 20px;
+  }
+  @media (max-width: 400px){
+    font-size: 16px;
+  }
+}
+@mixin text{
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 150%;
+  color: #333333;
+  @media (max-width: 575px){
+    font-size: 16px;
+  }
+  @media (max-width: 400px){
+    font-size: 14px;
+  }
+}
+@mixin text-sm {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 150%;
+  color: #333333;
+  @media (max-width: 575px){
+    font-size: 14px;
+  }
+  @media (max-width: 400px){
+    font-size: 12px;
+  }
+}
