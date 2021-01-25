@@ -32,6 +32,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const header = document.querySelector('.header');
   const menuBtn = document.querySelector('.menu__btn');
   const menu = document.querySelector('.menu');
+  const menuList = document.querySelector('.menu__list');
+  menuList.style.height = document.querySelector('.intro').offsetHeight + 'px';
 
   const rangeSliderActiveDot = document.querySelector('.range-slider-active-dot');
   const rangeSliderDots = document.querySelectorAll('.range-slider__dots .slick-dots li');
@@ -76,10 +78,16 @@ document.addEventListener("DOMContentLoaded", () => {
   // Functions
   function openMenu() {
     menu.classList.add('opened');
+    document.querySelector('.intro__video').style.opacity = 0;
+    if (document.documentElement.clientWidth < 768) {
+      document.querySelector('.intro__content').style.opacity = 0;
+    }
     //header.style.overflow = 'visible'
   }
   function closeMenu() {
     menu.classList.remove('opened');
+    document.querySelector('.intro__video').style.opacity = 1;
+    document.querySelector('.intro__content').style.opacity = 1;
     //header.style.overflow = 'hidden'
   }
 
