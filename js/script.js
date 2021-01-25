@@ -1,25 +1,3 @@
-$(document).ready(function () {
-
-  $('.range-slider').slick({
-    infinite: false,
-    variableWidth: true,
-    dots: true,
-    appendDots: '.range-slider__dots',
-    prevArrow: '.range-slider__p',
-    nextArrow: '.range-slider__n',
-  });
-  const rangeSliderActiveDot = document.querySelector('.range-slider-active-dot');
-  const rangeSliderDots = document.querySelectorAll('.range-slider__dots .slick-dots li');
-  const rangeSliderDotsContainer = document.querySelector('.range-slider__dots .slick-dots');
-  $('.range-slider').on('beforeChange', function (event, slick, currentSlide, nextSlide) {
-    let offset = rangeSliderDots[nextSlide].getBoundingClientRect().left - rangeSliderDotsContainer.getBoundingClientRect().left;
-    rangeSliderActiveDot.style.left = offset + 'px';
-  });
-  rangeSliderActiveDot.style.width = `${rangeSliderDots[0].clientWidth}px`;
-});
-
-
-
 document.addEventListener("DOMContentLoaded", () => {
   const ppOpeners = document.querySelectorAll('.popup-open');
   const ppClosers = document.querySelectorAll('.popup-close');
@@ -33,26 +11,37 @@ document.addEventListener("DOMContentLoaded", () => {
   const menuBtn = document.querySelector('.menu__btn');
   const menu = document.querySelector('.menu');
   const menuList = document.querySelector('.menu__list');
-  menuList.style.height = document.querySelector('.intro').offsetHeight + 'px';
 
   const rangeSliderActiveDot = document.querySelector('.range-slider-active-dot');
-  const rangeSliderDots = document.querySelectorAll('.range-slider__dots .slick-dots li');
-
+  const header_container = document.querySelector('header>.container');
+  const range_container = document.querySelector('.range>.container');
+  const range_wrapper = document.querySelector('.range__wrapper');
+  let header_container_left, range_container_left, range_left_offset
   let isMobileMenu = false;
   let unlock = true;
   let timeout = 400;
 
+  $(document).ready(function () {
 
-  const header_container = document.querySelector('header>.container');
-  const range_container = document.querySelector('.range>.container');
-  const range_wrapper = document.querySelector('.range__wrapper');
-  let header_container_left = (parseFloat(window.getComputedStyle(header_container).getPropertyValue("margin-left")) + parseFloat(window.getComputedStyle(header_container).getPropertyValue("padding-left")));
-  let range_container_left = (parseFloat(window.getComputedStyle(range_container).getPropertyValue("margin-left")) + parseFloat(window.getComputedStyle(range_container).getPropertyValue("padding-left")));
-  let range_left_offset = range_container_left - header_container_left;
-  range_wrapper.style.marginLeft = `-${range_left_offset}px`;
-
-
-
+    $('.range-slider').slick({
+      infinite: false,
+      variableWidth: true,
+      dots: true,
+      appendDots: '.range-slider__dots',
+      prevArrow: '.range-slider__p',
+      nextArrow: '.range-slider__n',
+    });
+    const rangeSliderActiveDot = document.querySelector('.range-slider-active-dot');
+    const rangeSliderDots = document.querySelectorAll('.range-slider__dots .slick-dots li');
+    const rangeSliderDotsContainer = document.querySelector('.range-slider__dots .slick-dots');
+    $('.range-slider').on('beforeChange', function (event, slick, currentSlide, nextSlide) {
+      let offset = rangeSliderDots[nextSlide].getBoundingClientRect().left - rangeSliderDotsContainer.getBoundingClientRect().left;
+      rangeSliderActiveDot.style.left = offset + 'px';
+    });
+    rangeSliderActiveDot.style.width = `${rangeSliderDots[0].clientWidth}px`;
+    Fresh();
+  });
+  menuList.style.height = document.querySelector('.intro').offsetHeight + 'px';
   //Listeners
   headerLangActive.addEventListener('click', () => {
     headerLang.classList.toggle('opened');
@@ -67,11 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   })
   window.addEventListener('resize', () => {
-    let header_container_left = (parseFloat(window.getComputedStyle(header_container).getPropertyValue("margin-left")) + parseFloat(window.getComputedStyle(header_container).getPropertyValue("padding-left")));
-    let range_container_left = (parseFloat(window.getComputedStyle(range_container).getPropertyValue("margin-left")) + parseFloat(window.getComputedStyle(range_container).getPropertyValue("padding-left")));
-    let range_left_offset = range_container_left - header_container_left;
-    range_wrapper.style.marginLeft = `-${range_left_offset}px`;
-    rangeSliderActiveDot.style.width = `${document.querySelector('.range-slider__dots .slick-dots li').clientWidth}px`;
+    Fresh();
   })
 
 
@@ -91,7 +76,42 @@ document.addEventListener("DOMContentLoaded", () => {
     //header.style.overflow = 'hidden'
   }
 
+  function Fresh() {
+    header_container_left = (parseFloat(window.getComputedStyle(header_container).getPropertyValue("margin-left")) + parseFloat(window.getComputedStyle(header_container).getPropertyValue("padding-left")));
+    range_container_left = (parseFloat(window.getComputedStyle(range_container).getPropertyValue("margin-left")) + parseFloat(window.getComputedStyle(range_container).getPropertyValue("padding-left")));
+    range_left_offset = range_container_left - header_container_left;
+    range_wrapper.style.marginLeft = `-${range_left_offset}px`;
+    rangeSliderActiveDot.style.width = `${document.querySelectorAll('.range-slider__dots .slick-dots li')[0].clientWidth}px`;
 
+    const stage1 = document.getElementById('stage1');
+    const stage2 = document.getElementById('stage2');
+    const stage3 = document.getElementById('stage3');
+    let horizontalOffset = stage2.getBoundingClientRect().left - stage1.getBoundingClientRect().right;
+    let verticalOffset = stage3.getBoundingClientRect().top - stage1.getBoundingClientRect().bottom;
+
+    const verticalArrows = document.querySelectorAll('.work-stages__stage.vertical .arrow');
+    const horizontalArrows = document.querySelectorAll('.work-stages__stage.horizontal .arrow');
+    if (document.documentElement.clientWidth < 992) {
+      verticalOffset = stage2.getBoundingClientRect().top - stage1.getBoundingClientRect().bottom;
+      console.log(verticalOffset);
+    }
+    verticalArrows.forEach((item) => {
+      item.style.maxHeight = verticalOffset + 'px';
+      item.style.height = verticalOffset + 'px';
+    })
+    horizontalArrows.forEach((item) => {
+      if (document.documentElement.clientWidth >= 992) {
+        item.style.width = horizontalOffset + 'px';
+        item.style.maxWidth = horizontalOffset + 'px';
+      }
+      else {
+        item.style.width = '';
+        item.style.maxWidth = '';
+        item.style.height = verticalOffset + 'px';
+      }
+    })
+
+  }
 
 
 
