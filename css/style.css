@@ -834,6 +834,107 @@ dl {
           .certificates .container .certificates__wrapper .papers__item a span {
             font-size: 14px; } }
 
+.partners {
+  background-image: url("../img/bgs/partners.jpg");
+  background-size: cover;
+  background-position: 0 0;
+  background-repeat: no-repeat; }
+  .partners .container .partners__wrapper {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    padding: 150px 0; }
+    @media (max-width: 575px) {
+      .partners .container .partners__wrapper {
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+                flex-direction: column;
+        -webkit-box-pack: center;
+            -ms-flex-pack: center;
+                justify-content: center;
+        -webkit-box-align: center;
+            -ms-flex-align: center;
+                align-items: center;
+        padding: 90px 0; } }
+    @media (max-width: 400px) {
+      .partners .container .partners__wrapper {
+        padding: 70px 0; } }
+    .partners .container .partners__wrapper .partners__left {
+      width: 50%;
+      padding-right: 10px; }
+      @media (max-width: 575px) {
+        .partners .container .partners__wrapper .partners__left {
+          width: 100%;
+          padding-right: 0;
+          margin-bottom: 30px; } }
+      .partners .container .partners__wrapper .partners__left .partners__title {
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 30px;
+        color: #333333; }
+        @media (max-width: 767px) {
+          .partners .container .partners__wrapper .partners__left .partners__title {
+            font-size: 25px; } }
+        @media (max-width: 575px) {
+          .partners .container .partners__wrapper .partners__left .partners__title {
+            font-size: 20px; } }
+        @media (max-width: 400px) {
+          .partners .container .partners__wrapper .partners__left .partners__title {
+            font-size: 18px; } }
+      .partners .container .partners__wrapper .partners__left .partners__description {
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 18px;
+        line-height: 150%;
+        color: #333333;
+        margin: 30px 0; }
+        @media (max-width: 575px) {
+          .partners .container .partners__wrapper .partners__left .partners__description {
+            font-size: 16px; } }
+        @media (max-width: 400px) {
+          .partners .container .partners__wrapper .partners__left .partners__description {
+            font-size: 14px; } }
+      @media (max-width: 400px) {
+        .partners .container .partners__wrapper .partners__left .theme-btn {
+          width: 100%; } }
+    .partners .container .partners__wrapper .partners__right {
+      padding-left: 10px;
+      width: 50%; }
+      @media (max-width: 767px) {
+        .partners .container .partners__wrapper .partners__right {
+          width: 100%; } }
+      .partners .container .partners__wrapper .partners__right .partners__items {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-wrap: wrap;
+            flex-wrap: wrap; }
+        .partners .container .partners__wrapper .partners__right .partners__items .partners__item {
+          width: calc(33.33333% - 10px);
+          margin: 5px; }
+          @media (max-width: 767px) {
+            .partners .container .partners__wrapper .partners__right .partners__items .partners__item {
+              width: calc(50% - 10px); } }
+          @media (max-width: 575px) {
+            .partners .container .partners__wrapper .partners__right .partners__items .partners__item {
+              width: calc(33.33333% - 10px); } }
+          @media (max-width: 400px) {
+            .partners .container .partners__wrapper .partners__right .partners__items .partners__item {
+              width: calc(50% - 10px); } }
+          .partners .container .partners__wrapper .partners__right .partners__items .partners__item img {
+            width: 100%;
+            -o-object-fit: contain;
+               object-fit: contain; }
+
 #result {
   display: -webkit-box;
   display: -ms-flexbox;
