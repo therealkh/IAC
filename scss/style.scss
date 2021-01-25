@@ -923,6 +923,9 @@ dl{
             &.down{
               .work-stages__img{
                 position: relative;
+                @media (max-width: 991px){
+                  position: static;
+                }
                 .arrow{
                   top: 100%;
                   left: 50%;
@@ -937,7 +940,7 @@ dl{
             &.right{
               .work-stages__img{
                 @media (max-width: 991px){
-                  position: relative;
+                  position: static;
                   .arrow{
                     top: 100%;
                     left: 50%;
@@ -966,7 +969,7 @@ dl{
                   }
                 }
                 @media (max-width: 991px){
-                  position: relative;
+                  position: static;
                   .arrow{
                     top: 100%;
                     left: 50%;
