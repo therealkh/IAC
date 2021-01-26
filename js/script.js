@@ -16,6 +16,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const header_container = document.querySelector('header>.container');
   const range_container = document.querySelector('.range>.container');
   const range_wrapper = document.querySelector('.range__wrapper');
+
+  const galleryPhotos = document.querySelector('.gallery__photos');
+
+
   let header_container_left, range_container_left, range_left_offset
   let isMobileMenu = false;
   let unlock = true;
@@ -110,6 +114,13 @@ document.addEventListener("DOMContentLoaded", () => {
         item.style.height = verticalOffset + 'px';
       }
     })
+
+    if (document.documentElement.clientWidth > 991) {
+      galleryPhotos.style.height = (galleryPhotos.clientWidth * 630 / 1280) + 'px';
+    }
+    else {
+      galleryPhotos.style.height = (galleryPhotos.clientWidth * 653.68 / 281.25) + 'px';
+    }
 
   }
 
