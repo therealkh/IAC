@@ -13,13 +13,13 @@ document.addEventListener("DOMContentLoaded", () => {
   const menuList = document.querySelector('.menu__list');
 
   const rangeSliderActiveDot = document.querySelector('.range-slider-active-dot');
+  const teamSliderActiveDot = document.querySelector('.team-slider-active-dot');
   const header_container = document.querySelector('header>.container');
   const range_container = document.querySelector('.range>.container');
   const range_wrapper = document.querySelector('.range__wrapper');
 
   const galleryPhotos = document.querySelector('.gallery__photos');
-
-
+  const selects = document.querySelectorAll('.select');
   let header_container_left, range_container_left, range_left_offset
   let isMobileMenu = false;
   let unlock = true;
@@ -35,6 +35,15 @@ document.addEventListener("DOMContentLoaded", () => {
       prevArrow: '.range-slider__p',
       nextArrow: '.range-slider__n',
     });
+    $('.team-slider__slider').slick({
+      //infinite: false,
+      variableWidth: true,
+      dots: true,
+      appendDots: '.team-slider__dots',
+      prevArrow: '.team-slider__p',
+      nextArrow: '.team-slider__n',
+    });
+
     const rangeSliderActiveDot = document.querySelector('.range-slider-active-dot');
     const rangeSliderDots = document.querySelectorAll('.range-slider__dots .slick-dots li');
     const rangeSliderDotsContainer = document.querySelector('.range-slider__dots .slick-dots');
@@ -42,11 +51,52 @@ document.addEventListener("DOMContentLoaded", () => {
       let offset = rangeSliderDots[nextSlide].getBoundingClientRect().left - rangeSliderDotsContainer.getBoundingClientRect().left;
       rangeSliderActiveDot.style.left = offset + 'px';
     });
+
+    const teamSliderActiveDot = document.querySelector('.team-slider-active-dot');
+    const teamSliderDots = document.querySelectorAll('.team-slider__dots .slick-dots li');
+    const teamSliderDotsContainer = document.querySelector('.team-slider__dots .slick-dots');
+    const teamSlides = document.querySelectorAll('.team-slider__single-slide');
+    const teamInfoName = document.querySelector('.team-info__name');
+    const teamInfoPost = document.querySelector('.team-info__post');
+    $('.team-slider').on('beforeChange', function (event, slick, currentSlide, nextSlide) {
+      let offset = teamSliderDots[nextSlide].getBoundingClientRect().left - teamSliderDotsContainer.getBoundingClientRect().left;
+      teamSliderActiveDot.style.left = offset + 'px';
+      teamInfoName.style.opacity = 0;
+      teamInfoPost.style.opacity = 0;
+      setTimeout(() => {
+        teamInfoName.textContent = teamSlides[nextSlide].getAttribute('data-name');
+        teamInfoPost.textContent = teamSlides[nextSlide].getAttribute('data-post');
+        teamInfoName.style.opacity = '';
+        teamInfoPost.style.opacity = '';
+      }, 200)
+    });
     rangeSliderActiveDot.style.width = `${rangeSliderDots[0].clientWidth}px`;
+    teamSliderActiveDot.style.width = `${teamSliderDots[0].clientWidth}px`;
     Fresh();
   });
   menuList.style.height = document.querySelector('.intro').offsetHeight + 'px';
   //Listeners
+  selects.forEach((item, index, arr) => {
+    const active = item.querySelector('span');
+    const list = item.querySelector('ul.select__list');
+    const options = list.querySelectorAll('li');
+    const input = item.querySelector('input[type=text]');
+    let bottom = active.getBoundingClientRect().bottom;
+    active.addEventListener('click', () => {
+      item.classList.toggle('opened');
+    })
+    options.forEach((option) => {
+      option.addEventListener('click', () => {
+        let value = option.textContent;
+        active.textContent = value;
+        input.setAttribute('value', value);
+        item.classList.remove('opened');
+      })
+    })
+  });
+
+
+
   headerLangActive.addEventListener('click', () => {
     headerLang.classList.toggle('opened');
   })
@@ -86,6 +136,7 @@ document.addEventListener("DOMContentLoaded", () => {
     range_left_offset = range_container_left - header_container_left;
     range_wrapper.style.marginLeft = `-${range_left_offset}px`;
     rangeSliderActiveDot.style.width = `${document.querySelectorAll('.range-slider__dots .slick-dots li')[0].clientWidth}px`;
+    teamSliderActiveDot.style.width = `${document.querySelectorAll('.team-slider__dots .slick-dots li')[0].clientWidth}px`;
 
     const stage1 = document.getElementById('stage1');
     const stage2 = document.getElementById('stage2');
@@ -97,7 +148,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const horizontalArrows = document.querySelectorAll('.work-stages__stage.horizontal .arrow');
     if (document.documentElement.clientWidth < 992) {
       verticalOffset = stage2.getBoundingClientRect().top - stage1.getBoundingClientRect().bottom;
-      console.log(verticalOffset);
+      //console.log(verticalOffset);
     }
     verticalArrows.forEach((item) => {
       item.style.maxHeight = verticalOffset + 'px';
@@ -115,13 +166,15 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     })
 
-    if (document.documentElement.clientWidth > 991) {
+    if (document.documentElement.clientWidth > 767) {
       galleryPhotos.style.height = (galleryPhotos.clientWidth * 630 / 1280) + 'px';
     }
     else {
       galleryPhotos.style.height = (galleryPhotos.clientWidth * 653.68 / 281.25) + 'px';
     }
 
+
+    document.querySelector('.team__map').style.height = document.querySelector('.team__map').getBoundingClientRect().width + 'px';
   }
 
 
