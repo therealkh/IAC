@@ -1511,14 +1511,115 @@ dl{
     }
   }
 }
-
-
-
-
-
-
-.footer{
+.footer {
+  background-color: $COLOR_ACCENT;
+  .container {
+    .footer__wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 65px 0;
+      color: $COLOR_WHITE;
+      @media (max-width: 991px){
+        flex-direction: column;
+        align-items: center;
+      }
+      .footer__logo {
+        @media (max-width: 991px){
+          margin-bottom: 30px;
+        }
+        img {
+          width: 100%;
+          object-fit: contain;
+        }
+      }
+      .footer__contacts {
+        position: relative;
+        padding-top: 28px;
+        @media (min-width: 992px){
+          max-width: 35%;
+        }
+        @media (max-width: 991px){
+          margin-bottom: 20px;
+          text-align: center;
+          padding-top: 15px;
+        }
+        .footer__title {
+          @include subheadline;
+          color: $COLOR_WHITE;
+          position: absolute;
+          left: 5px;
+          bottom: 100%;
+          @media (max-width: 991px){
+            left: 50%;
+            transform: translateX(-50%);
+          }
+        }
+        span {
+          @include text;
+          color: $COLOR_WHITE;
+          br {
+          }
+        }
+      }
+      .footer__phone-mail {
+        padding-top: 28px;
+        display: flex;
+        flex-direction: column;
+        @media (max-width: 991px){
+          text-align: center;
+          flex-direction: row;
+          margin-bottom: 20px;
+          padding-top: 0;
+        }
+        a{
+          @include text;
+          color: $COLOR_WHITE;
+          text-decoration: none;
+          transition: color 0.2s;
+          &:first-child{
+            margin-bottom: 12px;
+            @media (max-width: 991px){
+              margin-right: 25px;
+            }
+          }
+          &:hover{
+            color: $COLOR_GRAY;
+          }
+          &:active{
+            color: $COLOR_TEXT_SECONDARY;
+          }
+        }
+      }
+      .footer__socials {
+        height: 40px;
+        display: flex;
+        align-items: center;
+        .footer__social-link {
+          display: inline-block;
+          &:nth-child(2){
+            margin: 0 25px;
+          }
+          svg {
+            fill: $COLOR_WHITE;
+            transition: all 0.2s;
+          }
+          &:hover {
+            svg{
+              fill: $COLOR_GRAY
+            }
+          }
+          &:active {
+            svg{
+              fill: $COLOR_TEXT_SECONDARY;
+            }
+          }
+        }
+      }
+    }
+  }
 }
+
 
 
 #result{
