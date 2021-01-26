@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
       nextArrow: '.range-slider__n',
     });
     $('.team-slider__slider').slick({
-      //infinite: false,
+      infinite: false,
       variableWidth: true,
       dots: true,
       appendDots: '.team-slider__dots',
@@ -64,12 +64,15 @@ document.addEventListener("DOMContentLoaded", () => {
       teamInfoName.style.opacity = 0;
       teamInfoPost.style.opacity = 0;
       setTimeout(() => {
+        console.log(teamSlides);
         teamInfoName.textContent = teamSlides[nextSlide].getAttribute('data-name');
         teamInfoPost.textContent = teamSlides[nextSlide].getAttribute('data-post');
         teamInfoName.style.opacity = '';
         teamInfoPost.style.opacity = '';
       }, 200)
     });
+
+
     rangeSliderActiveDot.style.width = `${rangeSliderDots[0].clientWidth}px`;
     teamSliderActiveDot.style.width = `${teamSliderDots[0].clientWidth}px`;
     Fresh();
