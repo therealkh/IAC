@@ -27,7 +27,7 @@ html{
 }
 body{
   position: relative;
-  //overflow-x: hidden;
+  overflow-x: hidden;
   &.lock{
     overflow: hidden;
   }
@@ -88,7 +88,6 @@ dl{
   background-size: cover;
   background-color: $COLOR_WHITE;
   background-repeat: no-repeat;
-  //overflow: hidden;
   .container {
     .header-wrapper {
       position: relative;
@@ -251,10 +250,10 @@ dl{
                 }
               }
             }
-            &__list {
+            .menu__list {
               position: absolute;
               top: 100%;
-              right: 0;
+              right: -100%;
               //padding-right: 200px;
               background-color: transparent;
               display: flex;
@@ -266,7 +265,8 @@ dl{
               opacity: 0;
               visibility: hidden;
               transition: all 0.4s;
-              //border: 1px solid #000;
+              padding: 0 100px;
+              background-color: $COLOR_WHITE;
               ul {
                 padding: 0;
                 margin: 0;
@@ -291,6 +291,7 @@ dl{
             }
             &.opened{
               .menu__list{
+                right: 0;
                 opacity: 1;
                 visibility: visible;
               }
@@ -1615,6 +1616,279 @@ dl{
           &:active {
             svg{
               fill: $COLOR_TEXT_SECONDARY;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+.all-products {
+  .container {
+    .all-products__wrapper{
+      overflow: hidden;
+      display: flex;
+      @media (max-width: 991px){
+        flex-direction: column;
+        align-items: center;
+      }
+      .dropdown {
+        width: 260px;
+        min-width: 260px;
+        @media (max-width: 991px){
+          margin-bottom: 30px;
+        }
+        &.opened{
+          &>.dropdown__title{
+            &:after{
+              transform: rotate(180deg);
+            }
+          }
+          &>.dropdown__list{
+            height: auto;
+          }
+        }
+        &__title {
+          cursor: pointer;
+          background-color: $COLOR_ACCENT;
+          @include text;
+          color: $COLOR_WHITE;
+          padding: 12px 62px 12px 12px;
+          position: relative;
+          width: 100%;
+          &:before{
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 0;
+            height: 100%;
+            width: 50px;
+            background-color: $COLOR_DARK_GREEN;
+          }
+          &:after{
+            content: '';
+            position: absolute;
+            right: 12.5px;
+            top: 0;
+            height: 100%;
+            width: 25px;
+            background-image: url('../img/UIKit/select-arrow.svg');
+            background-position: center center;
+            background-size: contain;
+            background-repeat: no-repeat;
+            transition: transform 0.2s;
+          }
+        }
+        &__list {
+          width: 100%;
+          list-style: none;
+          padding: 0 12px;
+          background-color: $COLOR_TEXT;
+          margin: 0;
+          //border: 1px solid red;
+          overflow: hidden;
+          transition: height 0.4s;
+          li {
+            cursor: pointer;
+            padding-left: 10px;
+            width: 100%;
+            background-color: $COLOR_TEXT;
+            @include text;
+            color: $COLOR_WHITE;
+            padding: 12px 0;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            border-top: 1px solid $COLOR_TEXT_SECONDARY;
+            .subdropdown {
+              width: 100%;
+              &.opened{
+                &>.subdropdown__title{
+                  &:after{
+                    transform: rotate(180deg);
+                  }
+                }
+                &>.subdropdown__list{
+                  height: auto;
+                }
+              }
+              &__title {
+                cursor: pointer;
+                padding-left: 10px;
+                width: 100%;
+                background-color: $COLOR_TEXT;
+                @include text;
+                color: $COLOR_WHITE;
+                padding: 0 62px 0 12px;
+                position: relative;
+                margin-left: -12px;
+                &:after{
+                  content: '';
+                  position: absolute;
+                  right: 12.5px;
+                  top: 0;
+                  height: 100%;
+                  width: 15px;
+                  background-image: url('../img/UIKit/select-arrow.svg');
+                  background-position: center center;
+                  background-size: contain;
+                  background-repeat: no-repeat;
+                  transition: transform 0.2s;
+                }
+              }
+              &__list {
+                width: 100%;
+                list-style: none;
+                padding: 0;
+                margin: 0;
+                //border: 1px solid green;
+                overflow: hidden;
+                transition: all 0.4s;
+                //padding-top: 12px;
+                //box-sizing: padding-box;
+                li {
+                  cursor: pointer;
+                  width: 100%;
+                  padding-left: 10px;
+                  width: 100%;
+                  background-color: $COLOR_TEXT;
+                  @include text;
+                  color: $COLOR_WHITE;
+                  padding: 12px 12px 12px 30px;
+                  white-space: nowrap;
+                  text-overflow: ellipsis;
+                  overflow: hidden;
+                }
+              }
+            }
+          }
+        }
+      }
+      .products {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        &__title{
+          width: 100%;
+          padding: 0 40px;
+          transition: all 0.2s;
+          span{
+            @include headline;
+            color: $COLOR_ACCENT;
+            display: block;
+            width: 100%;
+            border-bottom: 2px solid $COLOR_TEXT_SECONDARY;
+          }
+        }
+        &__wrapper {
+          max-width: 766px;
+          //display: none;
+          flex-shrink: 1;
+          display: flex;
+          justify-content: flex-start;
+          align-items: center;
+          flex-wrap: wrap;
+          transition: all 0.2s;
+          @media (max-width: 767px){
+            max-width: 510px;
+          }
+          @media (max-width: 575px){
+            width: 100%;
+            max-width: unset;
+            justify-content: space-between;
+          }
+          @media (max-width: 540px){
+            width: 335px;
+          }
+        }
+        .products-item {
+          width: 362px;
+          height: 315px;
+          margin: 10px;
+          position: relative;
+          overflow: hidden;
+          @media (max-width: 575px){
+            width: 285px;
+            margin-right: 10px;
+          }
+          @media (max-width: 1199px){
+            width: 315px;
+          }
+          @media (max-width: 767px){
+            width: 235px;
+            height: 235px;
+          }
+          @media (max-width: 540px){
+            width: 315px;
+            height: 315px;
+          }
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+          &__info {
+            position: absolute;
+            bottom: 0;
+            transform: translateY(100%);
+            left: 0;
+            width: 100%;
+            background-color: $COLOR_WHITE;
+            padding: 15px;
+            opacity: 0;
+            transition: all 0.2s;
+            @media (max-width: 1024px){
+              transform: translateY(0);
+              opacity: 1;
+            }
+            @media (max-width: 767px){
+              padding: 10px;
+            }
+            .products-item__name {
+              @include subheadline;
+              @include max-text-lines(2);
+              color: $COLOR_ACCENT;
+              @media (max-width: 1024px){
+                margin-bottom: 15px;
+              }
+              @media (max-width: 767px){
+                font-size: 20px;
+              }
+            }
+            .products-item__description {
+              @include max-text-lines(2);
+              @include text;
+              color: $COLOR_TEXT_SECONDARY;
+              margin: 16px 0;
+              @media (max-width: 1024px){
+                display: none;
+              }
+            }
+            .products-item__category {
+              display: flex;
+              width: 100%;
+              justify-content: space-between;
+              span {
+                @include text-sm;
+                color: $COLOR_TEXT_SECONDARY;
+                @media (max-width: 767px){
+                  font-size: 12px;
+                }
+              }
+              p{
+                @include text-sm;
+                color: $COLOR_HOVER;
+                @media (max-width: 767px){
+                  font-size: 12px;
+                }
+              }
+            }
+          }
+          &:hover{
+            .products-item__info{
+              transform: translate(0);
+              opacity: 1;
             }
           }
         }
