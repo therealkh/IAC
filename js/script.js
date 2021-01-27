@@ -176,8 +176,14 @@ document.addEventListener("DOMContentLoaded", () => {
       galleryPhotos.style.height = (galleryPhotos.clientWidth * 653.68 / 281.25) + 'px';
     }
 
-
-    document.querySelector('.team__map').style.height = document.querySelector('.team__map').getBoundingClientRect().width + 'px';
+    const squares = document.querySelectorAll('.square');
+    console.log(squares);
+    squares.forEach((item) => {
+      item.style.minHeight = item.getBoundingClientRect().width + 'px';
+      if (item.classList.contains('team__map')) {
+        item.style.height = item.getBoundingClientRect().width + 'px';
+      }
+    })
   }
 
 
