@@ -309,10 +309,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const squares = document.querySelectorAll('.square');
     if (squares) {
       squares.forEach((item) => {
-        item.style.minHeight = item.getBoundingClientRect().width + 'px';
-        if (item.classList.contains('team__map')) {
-          item.style.height = item.getBoundingClientRect().width + 'px';
-        }
+        item.style.height = window.getComputedStyle(item).getPropertyValue("width");
+        //if (item.classList.contains('team__map')) {
+        //item.style.height = item.getBoundingClientRect().width + 'px';
+        //}
       })
     }
   }
@@ -387,7 +387,7 @@ document.addEventListener("DOMContentLoaded", () => {
     openPopup(document.querySelector('#result'));
   }
   function bodyLock() {
-    const lockPaddingValue = window.innerWidth - document.querySelector('.intro').offsetWidth + 'px';
+    const lockPaddingValue = window.innerWidth - document.querySelector('.header').offsetWidth + 'px';
     //console.log(lockPaddingValue);
     if (lockPadding.length > 0) {
       for (let i = 0; i < lockPadding.length; i++) {
