@@ -303,7 +303,9 @@ document.addEventListener("DOMContentLoaded", () => {
         galleryPhotos.style.height = (galleryPhotos.clientWidth * 653.68 / 281.25) + 'px';
       }
     }
-
+    if (!menu.classList.contains('opened')) {
+      menuList.style.display = 'none';
+    }
     const squares = document.querySelectorAll('.square');
     if (squares) {
       squares.forEach((item) => {

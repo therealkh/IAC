@@ -1809,11 +1809,11 @@ dl {
         background-color: #363636;
         z-index: -1; }
       .team .container .team__wrapper .team__form .team__map iframe {
-        display: inline-block;
+        position: absolute;
+        top: 0;
+        left: 0;
         width: 100%;
-        min-height: 100%;
-        -o-object-fit: cover;
-           object-fit: cover; }
+        height: 100%; }
     .team .container .team__wrapper .team__form .team-form {
       width: 50%;
       padding-left: 50px; }
