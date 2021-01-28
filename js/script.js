@@ -11,6 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const menuBtn = document.querySelector('.menu__btn');
   const menu = document.querySelector('.menu');
   const menuList = document.querySelector('.menu__list');
+  const menuItems = document.querySelectorAll('.menu__list ul li a');
 
   const rangeSliderActiveDot = document.querySelector('.range-slider-active-dot');
   const teamSliderActiveDot = document.querySelector('.team-slider-active-dot');
@@ -221,6 +222,11 @@ document.addEventListener("DOMContentLoaded", () => {
       closeMenu();
     }
   })
+  menuItems.forEach((menuItem) => {
+    menuItem.addEventListener('click', () => {
+      closeMenu();
+    })
+  })
   window.addEventListener('resize', () => {
     Fresh();
   })
@@ -310,9 +316,6 @@ document.addEventListener("DOMContentLoaded", () => {
     if (squares) {
       squares.forEach((item) => {
         item.style.height = window.getComputedStyle(item).getPropertyValue("width");
-        //if (item.classList.contains('team__map')) {
-        //item.style.height = item.getBoundingClientRect().width + 'px';
-        //}
       })
     }
   }
