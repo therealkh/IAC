@@ -250,14 +250,6 @@ document.addEventListener("DOMContentLoaded", () => {
       menu.classList.add('opened');
       //bodyLock();
       document.body.style.overflowY = 'hidden';
-      if (document.querySelector('.intro')) {
-        document.querySelector('.intro__video').style.opacity = 0;
-      }
-      if (document.documentElement.clientWidth < 768) {
-        if (document.querySelector('.intro')) {
-          document.querySelector('.intro__content').style.opacity = 0;
-        }
-      }
     }, 10)
     //header.style.overflow = 'visible'
   }
