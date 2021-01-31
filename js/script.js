@@ -248,6 +248,8 @@ document.addEventListener("DOMContentLoaded", () => {
     menuList.style.display = '';
     setTimeout(() => {
       menu.classList.add('opened');
+      //bodyLock();
+      document.body.style.overflowY = 'hidden';
       if (document.querySelector('.intro')) {
         document.querySelector('.intro__video').style.opacity = 0;
       }
@@ -261,6 +263,8 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   function closeMenu() {
     menu.classList.remove('opened');
+    document.body.style.overflowY = '';
+    //bodyUnlock();
     if (document.querySelector('.intro')) {
       document.querySelector('.intro__video').style.opacity = 1;
       document.querySelector('.intro__content').style.opacity = 1;
@@ -274,7 +278,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function Fresh() {
     header_container_left = (parseFloat(window.getComputedStyle(header_container).getPropertyValue("margin-left")) + parseFloat(window.getComputedStyle(header_container).getPropertyValue("padding-left")));
-    menuList.style.height = '440px';
+    //menuList.style.height = '440px';
     if (document.querySelector('.range-slider')) {
       range_container_left = (parseFloat(window.getComputedStyle(range_container).getPropertyValue("margin-left")) + parseFloat(window.getComputedStyle(range_container).getPropertyValue("padding-left")));
       range_left_offset = range_container_left - header_container_left;

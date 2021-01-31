@@ -253,15 +253,18 @@ dl{
             .menu__list {
               position: absolute;
               top: 100%;
-              right: -100%;
+              right: 0;
+              transform: translateX(100%);
+              width: 100%;
+              height: calc(100vh - 100px);
               //padding-right: 200px;
               background-color: transparent;
               display: flex;
               align-items: flex-end;
               justify-content: center;
               flex-direction: column;
-              height: 569px;
-              max-height: calc(100vh - 100px);
+              //height: 569px;
+              //max-height: calc(100vh - 100px);
               opacity: 0;
               visibility: hidden;
               transition: all 0.4s;
@@ -291,7 +294,7 @@ dl{
             }
             &.opened{
               .menu__list{
-                right: 0;
+                transform: translateX(0);
                 opacity: 1;
                 visibility: visible;
               }
