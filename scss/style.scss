@@ -311,6 +311,7 @@ dl{
       display: flex;
       justify-content: space-between;
       align-items: center;
+      transition: all 0.3s;
       @media (max-width: 767px){
         flex-direction: column-reverse;
       }
@@ -1660,6 +1661,7 @@ dl{
           padding: 12px 62px 12px 12px;
           position: relative;
           width: 100%;
+          transition: all 0.2s;
           &:before{
             content: '';
             position: absolute;
@@ -1681,6 +1683,9 @@ dl{
             background-size: contain;
             background-repeat: no-repeat;
             transition: transform 0.2s;
+          }
+          &:hover{
+            background-color: $COLOR_HOVER;
           }
         }
         &__list {
@@ -1730,6 +1735,7 @@ dl{
                 padding: 0 62px 0 12px;
                 position: relative;
                 margin-left: -12px;
+                transition: all 0.2s;
                 &:after{
                   content: '';
                   position: absolute;
@@ -1742,6 +1748,9 @@ dl{
                   background-size: contain;
                   background-repeat: no-repeat;
                   transition: transform 0.2s;
+                }
+                &:hover{
+                  color: $COLOR_HOVER;
                 }
               }
               &__list {
@@ -1766,6 +1775,9 @@ dl{
                   white-space: nowrap;
                   text-overflow: ellipsis;
                   overflow: hidden;
+                  &:hover{
+                    color: $COLOR_HOVER;
+                  }
                 }
               }
             }

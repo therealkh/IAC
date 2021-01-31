@@ -248,14 +248,16 @@ document.addEventListener("DOMContentLoaded", () => {
     menuList.style.display = '';
     setTimeout(() => {
       menu.classList.add('opened');
+      document.querySelector('.intro .intro__wrapper').style.opacity = 0;
       //bodyLock();
       document.body.style.overflowY = 'hidden';
-    }, 10)
+    }, 10);
     //header.style.overflow = 'visible'
   }
   function closeMenu() {
     menu.classList.remove('opened');
     document.body.style.overflowY = '';
+    document.querySelector('.intro .intro__wrapper').style.opacity = '';
     //bodyUnlock();
     if (document.querySelector('.intro')) {
       document.querySelector('.intro__video').style.opacity = 1;
