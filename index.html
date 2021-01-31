@@ -877,15 +877,17 @@
           <div class="form-popup__form form">
             <div class="form__title">Мы свяжемся с Вами</div>
             <form id="sendForm">
+              <input type="text" name="product" id="productName" style="display: none;" value="не выбрано">
+              <input type="text" name="category" id="productCategory" style="display: none;" value="не выбрано">
               <div class="form__name">
                 <label for="name">Фамилия Имя</label>
-                <input id="name" type="text" placeholder="Фамилия Имя" required>
+                <input id="name" name="name" type="text" placeholder="Фамилия Имя" required>
               </div>
               <div class="form__phone">
                 <label for="phone">Номер телефона</label>
-                <input id="phone" type="tel" placeholder="Номер телефона" required>
+                <input id="phone" name="phone" type="tel" placeholder="Номер телефона" required>
               </div>
-              <button type="submit" class="theme-btn" form="sendForm">Получить предложение</button>
+              <button type="submit" class="theme-btn" form="sendForm" id="formSubmit">Получить предложение</button>
             </form>
           </div>
 
@@ -899,7 +901,7 @@
       </div>
     </div>
   </div>
-  <div id="product" class="popup">
+  <div id="product" class="popup" data-product="не выбрано" data-category="не выбрано">
     <div class="popup__body">
       <div class="popup__content">
         <div class="product-popup">
@@ -922,7 +924,7 @@
                 задач.</p>
             </div>
             <div class="product-popup__btn">
-              <a href="#" class="theme-btn">Заказать товар и получить подарок</a>
+              <a href="#form" id="openFormBtn" class="theme-btn popup-open">Заказать товар и получить подарок</a>
             </div>
 
           </div>
@@ -949,7 +951,7 @@
     <div class="popup__body">
       <div class="popup__content">
         <div class="result-msg">Спасибо! Ваша заявка была отправлена.</div>
-        <a href="#" class="popup-close btn-orange-fil">Закрыть</a>
+        <a href="#" class="popup-close theme-btn">Закрыть</a>
       </div>
     </div>
   </div>

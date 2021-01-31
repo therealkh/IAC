@@ -67,7 +67,6 @@ document.addEventListener("DOMContentLoaded", () => {
         teamInfoName.style.opacity = 0;
         teamInfoPost.style.opacity = 0;
         setTimeout(() => {
-          console.log(teamSlides);
           teamInfoName.textContent = teamSlides[nextSlide].getAttribute('data-name');
           teamInfoPost.textContent = teamSlides[nextSlide].getAttribute('data-post');
           teamInfoName.style.opacity = '';
@@ -113,7 +112,6 @@ document.addEventListener("DOMContentLoaded", () => {
       let subListHeight = subdropdownList.getBoundingClientRect().height;
       let listHeight = list.getBoundingClientRect().height;
 
-      console.log(listHeight, subListHeight);
       list.setAttribute('data-height', listHeight - subListHeight);
       subdropdownList.setAttribute('data-height', subListHeight);
       list.style.height = 0;
@@ -205,10 +203,23 @@ document.addEventListener("DOMContentLoaded", () => {
       let category = item.getAttribute('data-category');
       let categoryText = item.querySelector('.products-item__category p');
       categoryText.textContent = category;
+      item.addEventListener('click', () => {
+        const popup = document.querySelector('#product');
+        popup.setAttribute('data-product', item.querySelector('.products-item__name').textContent);
+        popup.setAttribute('data-category', item.getAttribute('data-category'));
+      })
     })
 
   }
 
+  if (document.querySelector('form#sendForm')) {
+    const form = document.querySelector('form#sendForm');
+    console.log(sendForm);
+    form.onsubmit = (event) => {
+      event.preventDefault();
+      send(form, event, 'mailer/sendForm.php', 'Спасибо за заявку! Скоро мы с вами свяжемся!')
+    }
+  }
 
   headerLangActive.addEventListener('click', () => {
     headerLang.classList.toggle('opened');
@@ -257,6 +268,7 @@ document.addEventListener("DOMContentLoaded", () => {
     setTimeout(() => {
       menuList.style.display = 'none'
     }, 300)
+
     //header.style.overflow = 'hidden'
   }
 
@@ -374,6 +386,15 @@ document.addEventListener("DOMContentLoaded", () => {
           closePopup(event.target.closest('.popup'));
         }
       })
+      if (popup.getAttribute('id') === 'product') {
+        const btn = popup.querySelector('.product-popup__btn a');
+        btn.addEventListener('click', () => {
+          const productInput = document.querySelector('form#sendForm input#productName');
+          const productCategory = document.querySelector('form#sendForm input#productCategory');
+          productInput.setAttribute('value', popup.getAttribute('data-product'));
+          productCategory.setAttribute('value', popup.getAttribute('data-category'));
+        })
+      }
     }
   }
   function closePopup(popup, doUnlock = true) {
@@ -381,6 +402,12 @@ document.addEventListener("DOMContentLoaded", () => {
       popup.classList.remove('opened');
       if (doUnlock) {
         bodyUnlock();
+      }
+      if (popup.getAttribute('id') === 'form') {
+        const productInput = document.querySelector('form#sendForm input#productName');
+        const productCategory = document.querySelector('form#sendForm input#productCategory');
+        productInput.setAttribute('value', 'не выбрано');
+        productCategory.setAttribute('value', 'не выбрано');
       }
     }
   }
